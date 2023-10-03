@@ -1,5 +1,6 @@
 package com.example.projek_syamsul.dapur
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -110,6 +111,7 @@ class DapurActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SuspiciousIndentation")
     fun showDialog(data: PesananModel, position: Int) {
         val dialog = AlertDialog.Builder(this)
             dialog.setTitle("Konfirmasi")

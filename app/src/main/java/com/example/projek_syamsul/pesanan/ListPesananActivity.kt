@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.projek_syamsul.DashboardActivity
+import com.example.projek_syamsul.dapur.DapurActivity
 import com.example.projek_syamsul.databinding.ActivityListPesananBinding
 import com.example.projek_syamsul.db.MappingHelper
 import com.example.projek_syamsul.db.PesananHelper
@@ -34,7 +35,7 @@ class ListPesananActivity : AppCompatActivity() {
         val getNoMeja = intent.getStringExtra(Key.KEY_NO_MEJA)!!
 
         binding.idbtnKirim.setOnClickListener {
-            startActivity(Intent(this, DashboardActivity::class.java))
+            startActivity(Intent(this, DapurActivity::class.java))
         }
 
         binding.idbtnTambah.setOnClickListener {
