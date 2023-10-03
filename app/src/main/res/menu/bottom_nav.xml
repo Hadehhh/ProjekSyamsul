@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu"
+        android:enabled="true"
+        android:icon="@drawable/baseline_restaurant_menu_24"
+        android:title="Menu"/>
+
+    <item
+        android:id="@+id/pesanan"
+        android:enabled="true"
+        android:icon="@drawable/baseline_table_restaurant_24"
+        android:title="Pesanan"/>
+
+    <item
+        android:id="@+id/dapur"
+        android:enabled="true"
+        android:icon="@drawable/baseline_kitchen_24"
+        android:title="Dapur"/>
+
+</menu>

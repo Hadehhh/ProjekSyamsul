@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 class SplashActivity : AppCompatActivity() {
 
     //Deklarasi variabel timer splash screennya
-    private val SPLASH_TIME_OUT: Long = 5000 //delay 5 detik
+    private val SPLASH_TIME_OUT: Long = 2000 //delay 2 detik
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

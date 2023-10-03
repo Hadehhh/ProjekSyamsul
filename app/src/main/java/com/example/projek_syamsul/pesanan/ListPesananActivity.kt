@@ -1,5 +1,6 @@
 package com.example.projek_syamsul.pesanan
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -37,12 +38,13 @@ class ListPesananActivity : AppCompatActivity() {
         }
 
         binding.idbtnTambah.setOnClickListener {
-            val intent = Intent(this, KategoriActivity::class.java)
+            val intent = Intent(this, DashboardActivity::class.java)
             intent.putExtra(Key.KEY_NO_MEJA, getNoMeja)
             startActivity(intent)
         }
 
         adapterr = ListPesananAdapter(object : ListPesananAdapter.IOnItemClickCallback {
+            @SuppressLint("SuspiciousIndentation")
             override fun onItemClicked(data: PesananModel, position: Int) {
                 val dialog = AlertDialog.Builder(this@ListPesananActivity)
                     dialog.setTitle("Hapus")

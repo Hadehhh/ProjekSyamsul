@@ -1,15 +1,19 @@
 package com.example.projek_syamsul.dapur
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.projek_syamsul.DashboardActivity
+import com.example.projek_syamsul.R
 import com.example.projek_syamsul.databinding.ActivityDapurBinding
 import com.example.projek_syamsul.db.MappingHelper
 import com.example.projek_syamsul.db.PesananHelper
 import com.example.projek_syamsul.model.PesananModel
+import com.example.projek_syamsul.pesanan.PesananActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
@@ -24,8 +28,51 @@ class DapurActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDapurBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+//        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Mahambara Cafe App"
+
+        binding.bottomNavigation.menu.findItem(R.id.dapur).setChecked(true)
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.menu -> {
+                    // Respond to navigation item 1 click
+                    val intent = Intent(this, DashboardActivity::class.java)
+                    startActivity(intent)
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.pesanan -> {
+                    // Respond to navigation item 2 click
+                    val intent = Intent(this, PesananActivity::class.java)
+                    startActivity(intent)
+                    return@setOnItemSelectedListener true
+                }
+
+                R.id.dapur -> {
+                    // Respond to navigation item 2 click
+                    val intent = Intent(this, DapurActivity::class.java)
+                    startActivity(intent)
+                    return@setOnItemSelectedListener true
+                }
+                else -> return@setOnItemSelectedListener false
+            }
+        }
+        binding.bottomNavigation.setOnItemReselectedListener { item ->
+            when (item.itemId) {
+                R.id.menu -> {
+                    // Respond to navigation item 1 reselection
+                }
+
+                R.id.pesanan -> {
+                    // Respond to navigation item 2 reselection
+                }
+
+                R.id.dapur -> {
+                    // Respond to navigation item 2 reselection
+                }
+            }
+        }
 
         adapterr = DapurAdapter(object : DapurAdapter.IOnItemClickCallback {
             override fun onItemClicked(data: PesananModel, position: Int) {
@@ -66,7 +113,7 @@ class DapurActivity : AppCompatActivity() {
     fun showDialog(data: PesananModel, position: Int) {
         val dialog = AlertDialog.Builder(this)
             dialog.setTitle("Konfirmasi")
-                .setMessage("Apakah menu sudah siap ?")
+                .setMessage("Apakah menu sudah siap?")
                 .setPositiveButton("Sudah") { _, _ ->
                     pesananHelper.open()
                     pesananHelper.deleteById(data.id.toString())
